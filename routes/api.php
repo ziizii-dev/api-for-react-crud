@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToDoController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\UserListController;
 
 /*
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/userList',UserListController::class);
 //Route::post('/userList/edit/{id}',UserListController::class,'editUser');
-Route::apiResource('/todoList',ToDoController::class);
+Route::apiResource('/todolist',ToDoController::class);
 Route::get('/userlist/details/{id}',[UserListController::class,'details']);
 Route::post('edit',[ToDoController::class,'editTodo']);
+Route::resource('/brand',BrandController::class);

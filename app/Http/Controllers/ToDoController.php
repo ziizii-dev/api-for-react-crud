@@ -18,13 +18,8 @@ class ToDoController extends Controller
      */
     public function index()
     {
+
         $data = Todo::where('status',1)->get();
-        // select('to_dos.*','user_lists.*')
-        //          ->rightJoin('user_lists','user_lists.id','to_dos.user_id')
-        //          ->
-                //  get();
-                //  return $data;
-                //  $response = todoResource::collection($data);
         return response()->json([
             "error"=>false,
             "message"=>"todo list",
@@ -60,7 +55,7 @@ class ToDoController extends Controller
 
         //  return $validator;
         foreach($validator["todos"] as $todo){
-            //  ToDo::upDateOrCreate
+
              ToDo::Create([
                 'user_list_id' => $validator['user_list_id'],
                 'todo' => $todo
@@ -100,38 +95,7 @@ class ToDoController extends Controller
     {
         //
     }
-    // public function editTodo(Request $request)
-    // {
-    //     $data = [
-    //         "todo"=>$request->id,
-    //         "user_list_id"=>$request->user_list_id,
-    //         // "status"=>$request->status
-    //     ];
-    //     // return $data;
-    //     $response = ToDo::with("userList")->where([
-    //         ['status','=',1],
-    //         ['id',$request->id]
-    //        ])->first();
-    //     // return $response;
-    //     if(isset($response)){
-    //         ToDo::with("userList")->where([
-    //             ['status','=',1],
-    //             ['id',$request->id]
-    //            ])->update($data);
 
-    //     return response()->json([
-    //         "error"=>false,
-    //         "message"=>" success",
-    //         "data"=>$data
-    //        ]);
-    //     }
-    //     // return $response;
-    //     return response()->json([
-    //         "error"=>true,
-    //         "message"=>" there is no data",
-    //         "data"=>$response
-    //        ]);
-    // }
 
     /**
      * Update the specified resource in storage.
@@ -180,12 +144,9 @@ class ToDoController extends Controller
      */
     public function destroy($id)
     {
-
         $data = ToDo::where([
             ['status','=',1],
             ['id','=',$id]
-
-
            ])->first();
 
         if(isset($data)){

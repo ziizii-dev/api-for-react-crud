@@ -17,27 +17,13 @@ class UserListController extends Controller
     public function index()
     {
         $data =  UserList::where('status',1)->get();
-
         return response()->json([
             "error"=>"false",
             "message"=>"userlist",
             "data"=>$data
         ]);
     }
-    // public function details(Request $request, $id)
-    // {
-    //     return $id;
-    //     $data =  UserList::where('id',$id)->first();
 
-    //     return response()->json([
-    //         "error"=>"false",
-    //         "message"=>"userlist",
-    //         "data"=>$data
-    //     ]);
-    // }
-//  public function details(Request $request,$id){
-//     $data = UserList::where('id',$id)->first();
-//  }
     /**
      * Show the form for creating a new resource.
      *
@@ -167,18 +153,7 @@ class UserListController extends Controller
            ]);
     }
 
-    //.................
-    // public function deleteCategory($id,Request $request){
 
-    //     $data = Category::where('id',$request->id)->first();
-    //     // return $data;
-    //     if(isset($data)){
-    //         Category::where('id',$request->id)->delete();
-    //         return response()->json([  'status'=>'true','message'=>'delete success','deleteData'=>$data],200);
-    //     }
-    //     return response()->json(['status'=>'false', 'message'=>'there is no data' ],200);
-
-    //     }
 //.....................
     /**
      * Remove the specified resource from storage.
@@ -190,25 +165,6 @@ class UserListController extends Controller
      public function destroy($id)
     {
 
-        // $data = UserList::where([
-        //     ['status','=',1],
-        //     ['id','=',$id]
-
-        //    ])->first();
-        // // return $data;
-        // if(isset($data)){
-        //    $response= UserList::where([
-        //     ['status','=',1],
-        //     ['id','=',$id]
-
-        //    ])->delete();
-        //     // return $response;
-        //     return response()->json([
-        //         "error"=>false,
-        //         "message"=>"delete success",
-        //         "data"=>$response
-        //        ],200);
-        // }
 
         $user = UserList::find($id);
         if($user){
@@ -229,22 +185,5 @@ class UserListController extends Controller
 
         }
     }
-    // public function destroy($id)
-    // {
 
-    //     $delete = UserList::where('id',$id)->first();
-    //     if(isset($delete)){
-    //         UserList::where('id',$id)->delete();
-    //         return response()->json([
-    //             "error"=>false,
-    //             "message"=>"delete success",
-    //             "data"=>$delete
-    //            ],200);
-    //     }
-    //     return response()->json([
-    //         "error"=>true,
-    //         "message"=>"There is no data",
-    //         "data"=>$delete
-    //        ],200);
-    // }
 }
